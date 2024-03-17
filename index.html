@@ -1,1 +1,172 @@
-Hello World
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KliK Networks</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2884fdf7a1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <script>
+    function openApp() {
+      // check invite code
+      fetch('http://34.78.9.227:8000/code/' + $('#invite-code').val())
+          .then((response) => response.json())
+          .then((data) => {
+              console.log(data);
+              if (data["status"] === 1) {
+                window.location.href = data["url"];
+              } else {
+                $('#code-status').text("Invalid code.");
+              }
+
+          })
+          .catch((error) => {
+              console.error('Error fetching data:', error);
+          });  
+    }
+  </script>
+  <nav class="navbar sticky-top top-0 flex-md-nowrap p-3 mb-3 border-bottom d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start bg-white">
+    <a href="/" class="d-flex align-items-center mb-2 p-3 mb-lg-0 link-body-emphasis text-decoration-none">
+      <img src="/images/logo.svg" alt="logo" width=60 />
+    </a>
+
+    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+      <li><a href="/whitepaper" class="nav-link px-2 fs-5 link-body-emphasis">Whitepaper</a></li>
+    </ul>
+
+    <div class="text-end">
+      <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#inviteCodeModal">Open App</button>
+    </div>
+  </nav>
+  <main class="col-lg-9 mx-auto">
+    <div class="modal fade" id="inviteCodeModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="basic-url" class="form-label">Enter your invite code:</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="invite-code" aria-describedby="code-status">
+              </div>
+              <div class="form-text" id="code-status"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-dark" onclick="openApp()">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="row p-2 bg-body-tertiary rounded-3">
+      <div class="col-md-6">
+        <div class="h-100 py-5 my-4">
+          <div class="h-100 container-fluid py-5">
+            <h1 class="display-6 fw-bold">Personalized Interactions with Blockchain</h1>
+            <p class="col-md-12 fs-3 mb-4">No-Code and Reconfigurable Blockchain Workflow Design and Automation Assisted by Network of Generative AIs</p>
+            <div class="mb-2">
+              <button type="button" class="btn btn-dark w-50" data-bs-toggle="modal" data-bs-target="#inviteCodeModal">Get Started</button>
+            </div>
+            <div>
+              <button class="btn btn-outline-dark btn btn-sm w-25" type="button">Watch Demo</button>
+              <a href="/whitepaper" class="btn btn-outline-dark btn-sm w-25" type="button">Documentation</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 p-0">
+        <div class="h-100 mb-4">
+          <div class="h-100 container-fluid my-auto d-flex align-items-center justify-content-center">
+            <img class="min-vw-30" src="/images/aave.svg" alt="Example" width="100%"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row bg-white">
+      <div class="col-md-6 p-0">
+        <div class="h-100 mb-4">
+          <div class="h-100 container-fluid my-auto d-flex align-items-center justify-content-center">
+            <img class="min-vw-30" src="/images/structure.svg" alt="Example" width="100%"/>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 py-5 my-4">
+          <div class="h-100 container-fluid py-5">
+            <h1 class="display-6 fw-bold">Decentralized Training of Generative AIs on Blockchain Intelligence</h1>
+            <p class="col-md-12 fs-4">Incentivise blockchain community to share workflow patterns that AI agents can learn. The network of community trained AI agents are acessible to blockchain users for revolutionzing how they interact with blockchains through personalized workflows.</p>
+            <div>
+              <button class="btn btn-dark btn" type="button">Watch Demo</button>
+              <a href="/whitepaper" class="btn btn-outline-dark" type="button">Read Guide</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row bg-body-tertiary rounded-3">
+      <div class="col-md-12">
+        <div class="p-5 my-4">
+          <div class="container-fluid py-5">
+            <h1 class="display-6 fw-bold text-center">Shape the Future of Blockchain Intelligence</h1>
+              <p class="col-md-12 fs-4 text-center">Join the network of millions of blockchain users to shape the way people use blockchains and cryptos empowered by AI.</p>
+            <p class="col-md-12 fs-4 text-center">Earn rewards by either sharing your blockchain workflow or participating as an AI Agent.</p>
+            <div class="text-center">
+              <button class="btn btn-dark btn btn-lg" type="button">Earn Rewards</button>
+              <button class="btn btn-outline-dark btn-lg" type="button">Show Interest</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="p-5 my-4">
+          <div class="container-fluid py-5">
+            <h1 class="display-6 fw-bold text-center">Beyond Blockchain and Crypto</h1>
+              <p class="col-md-12 fs-4 text-center">The reasoning capability of AI on workflow automation can be applied to other domains. The AIs trained on KliK Networks are owned by the crypto community but it will go beyond crypto and blockchain. </p>
+            <div class="text-center">
+              <button class="btn btn-dark btn btn-lg" type="button">Watch Demo</button>
+              <button class="btn btn-outline-dark btn-lg" type="button">Read Guide</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="p-5 my-4 text-bg-dark rounded-3">
+          <div class="container-fluid py-5">
+            <h1 class="display-6 fw-bold text-center">Begin Your Journey to the World of Blockchain and AI</h1>
+            <div class="text-center">
+              <button type="button" class="btn btn-light btn-lg" data-bs-toggle="modal" data-bs-target="#inviteCodeModal">Get Started</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div>
+    <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+          <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+            <img src="images/logo.svg" alt="logo" width=60 />
+          </a>
+          <span class="mb-3 mb-md-0 text-body-secondary">© 2024 KliK Networks</span>
+        </div>
+
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+          <li class="fs-4 mx-1"><a class="text-body-secondary" href="#"><i class="fa-brands fa-twitter"></i></a></li>
+          <li class="fs-4 mx-1"><a class="text-body-secondary" href="#"><i class="fa-brands fa-discord"></i></a></li>
+          <li class="fs-4 mx-1"><a class="text-body-secondary" href="#"><i class="fa-brands fa-telegram"></i></a></li>
+        </ul>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

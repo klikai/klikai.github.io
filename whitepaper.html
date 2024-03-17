@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KliK Networks</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2884fdf7a1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <script>
+    function openApp() {
+      // check invite code
+      fetch('/code/' + $('#invite-code').val())
+          .then((response) => response.json())
+          .then((data) => {
+              console.log(data);
+              if (data["status"] === 1) {
+                window.location.href = data["url"];
+              } else {
+                $('#code-status').text("Invalid code.");
+              }
+
+          })
+          .catch((error) => {
+              console.error('Error fetching data:', error);
+          });  
+    }
+  </script>
+  <nav class="navbar sticky-top top-0 flex-md-nowrap p-3 mb-3 border-bottom d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start bg-white">
+    <a href="/" class="d-flex align-items-center mb-2 p-3 mb-lg-0 link-body-emphasis text-decoration-none">
+      <img src="images/logo.svg" alt="logo" width=60 />
+    </a>
+
+    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+      <li><a href="/whitepaper" class="nav-link px-2 fs-5 link-body-emphasis">Whitepaper</a></li>
+    </ul>
+
+    <div class="text-end">
+      <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#inviteCodeModal">Open App</button>
+    </div>
+  </nav>
+  <main class="col-lg-9 mx-auto">
+    <!-- Modal -->
+    <div class="modal fade" id="inviteCodeModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="basic-url" class="form-label">Enter your invite code:</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="invite-code" aria-describedby="code-status">
+              </div>
+              <div class="form-text" id="code-status"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-dark" onclick="openApp()">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex align-items-start">
+      <div class="flex-shrink-0 p-3" style="width: 280px;">
+        <div class="nav flex-column nav-underline me-3" role="tablist" aria-orientation="vertical">
+          <a href="#" class="d-flex pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+            <img src="images/favicon.ico" alt="logo" width=20 />
+            <span class="ms-2 fs-5 fw-semibold">Whitepaper</span>
+          </a>
+        </div>
+        <div class="nav flex-column nav-underline me-3" role="tablist" aria-orientation="vertical">
+          <button class="nav-link active" id="overview-tab" data-bs-toggle="pill" data-bs-target="#content-overview" type="button" role="tab" aria-controls="content-overview" aria-selected="true">Overview</button>
+          <button class="nav-link" id="vision-tab" data-bs-toggle="pill" data-bs-target="#content-vision" type="button" role="tab" aria-controls="content-vision" aria-selected="false">Our Vision</button>
+          <button class="nav-link" id="system-tab" data-bs-toggle="pill" data-bs-target="#content-system" type="button" role="tab" aria-controls="content-system" aria-selected="false">System Design</button>
+          <button class="nav-link" id="ai-tab" data-bs-toggle="pill" data-bs-target="#content-ai" type="button" role="tab" aria-controls="content-ai" aria-selected="false">Generative AI</button>
+          <button class="nav-link" id="incentive-tab" data-bs-toggle="pill" data-bs-target="#content-incentive" type="button" role="tab" aria-controls="content-incentive" aria-selected="false">Incentive Scheme</button>
+          <button class="nav-link" id="roadmap-tab" data-bs-toggle="pill" data-bs-target="#content-roadmap" type="button" role="tab" aria-controls="content-roadmap" aria-selected="false">Roadmap</button>
+        </div>
+      </div>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="content-overview" role="tabpanel" aria-labelledby="overview-tab" tabindex="0">
+          <h2>Overview</h2>
+          <p>In the world of Web 2.0, applications developed by different companies don't talk to each other. A meeting invitation you received on Outlook doesn't appear on your Google Calendar and your search preferences for Google are not used if you search on Bing. The reason behind this is that different companies build their own ecosystem and don't want to share, import and export functionalities across platforms that they builds on. </p>
+          <p>Going into the Web 3.0 era, applications are built on a common platform - blockchain, where each decentralized application is built by following similar if not exactly the same standards, which makes the data and functionalities easily shareable between applications. One blockchain application can access and modify the data and state of another application without much obstables. The barriers Web2 users used to face no longer exist in the Web 3.0 world where users are capable of doing more interesting stuff by exploring this interoperability nature of blockchain and Web 3.0 applications. </p>
+          <p>Neverthelss, although blockchains and applications on them are public accessible, interacting with blockchain or smart contracts is not trivial task for everyone. Moreover, each blockchain user might have different needs when using blockchain, especially considering the vast amount of interoperable applications on blockchains. For certain activities, it might involve monitoring state of some protocols, and then make some trades on another protocol while later send the received tokens to another protocol for other interactions. Currently, most personalized interactions have to be coded by experiences developers, even by using smart contract automation platforms such as Gelato Networks that offers some level of abstraction. This process is very similar to how application development works in Web 2.0 era that requires time, expertise and costs money and the results can still fall short of the personalized requirements by users due to the limits posed by existing solutions. </p>
+          <p>KliK's mission is to make personalized interactions with blockchain both easy and cheap enough for every blockchain user, whether it's just for simple automation tasks such as scheduling transactions or listening to events, or much more complicated tasks that involve a lot of steps in the execution. We are achieving this goal by adopting the following approaches:</p>
+          <ul>
+            <li>
+              <p>A <strong>No-Code, Reconfigurable</strong> graphic interface for users to design, organize and build the workflows they need for interacting with blockchain and smart contracts. By creating no-code and play-and-plug tools for users, they can quickly build personalized executable workflows without deep technical knowledge of coding or blockchain. Moreover, this approach also makes it possible to satisfy almost every possible use cases by simply reconfiguring different on-chain and off-chain components for workflows of various complexity. As there are Legos for infants, but also for teenagers. </p>
+            </li>
+            <li>
+              <p>A network of <strong>Generative AI Agents</strong> that are trained for blockchain workflow designs by receiving inputs such as simple commands or conversations. Generative AIs have been proved to show strong reasoning capabilities once well trained or fine-tuned. They are the perfect tool to help users navigate difficult problems such as workflow design even though they don't have strong technical background or domain knowledge. </p>
+            </li>
+            <li>
+              <p>A network of <strong>Automation Agents</strong> that are able to execute the workflow designed either by users or AIs. They will host the workflow using the execution stack built into KliK and their node infrastructure. These agents will send back necessary execution results to users for alerts, visualization, analysis and transaction approval. </p>
+            </li>
+          </ul>
+          <div class="container-fluid d-flex align-items-center justify-content-center w-75">
+            <img class="min-vw-30" src="images/triangle.svg" alt="Example" width="100%"/>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="content-vision" role="tabpanel" aria-labelledby="vision-tab" tabindex="0">
+          <h2>Our Vision</h2>
+          <p>As a public infrastructure that is accessible by everyone, blockchain should be made easy to use. Everyone should be able to build a simple blockchain application quickly enough in order to best utilize the benefits that blockchain offers. However, every blockchain user has their individual needs, personal requirements, technical expertise, required complexity of the tasks, etc. This would lead to applications of very distinct features and functionalities to be built and customized. For simple use cases such as scheduling transactions or placing limit order on AMMs, to certain very complicated use cases that requires interactions with multiple smart contracts, various trigger conditions, combined with complicated computational tasks.</p>
+          <p>Our vision is an ambitious one. We want to have a platform that can be used to build blockchain applications based on <strong>ANY</strong> request a user might have, thus solving this problem all at once. Any blockchain user can come to the platform with some request for doing something using blockchain and we will give the user an application that can help the user achieve the goal to its best. The user doesn't have to be a developer, or have very deep understanding of blockchain and smart contracts, as long as the user can express the intention clearly, the application can be built.</p>
+          <p>Certainly to solve this problem at scale, you can't just employ an army of developers and build an application whenever a user comes. You must employ a very good framework that can be generalized enough to common use cases, but also tailored enough to satisfy the needs for every request that user has. Luckily, we have identified the following techniques that can help us accomplish our ambitious vision. </p>
+          <div class="container-fluid d-flex align-items-center justify-content-center w-75">
+            <img class="min-vw-30" src="images/vision.svg" alt="Example" width="100%"/>
+          </div>
+          <ul>
+            <li>
+              <p><strong>Abstraction</strong>. Blockchain applications are typically highly logical and have limited scope. They usually involve performing tasks step by step by utilizing existing funcionalities provided by smart contract. Employing abstraction technique to present an application as a workflow would help with our vision. Each workflow would simply be a different combinations of smaller components and modules that can perform smaller tasks such as computation and smart contract interactions. </p>
+            </li>
+            <li>
+              <p><strong>Generative AI</strong>. Another technique that can help us achieve the goal is to employ generative AI when fulfilling user requests. Generative AIs have shown strong reasoning capabilities through good understanding of human intentions and it keeps improving over time when newer generations of LLMs. AIs can be trained to understand verbal requests from users, extracting necessary components for fulfilling the requests and reason about the structure for the application by configuring the components. Therefore, an army of Web3 developers can be replaced with a powerful AI agent to help users design blockchain applications according to their individual needs. </p>
+            </li>
+            <li>
+              <p><strong>Decentralization</strong>. Executing blockchain applications require certain infrastructure such as nodes and computation resources. With the development of decentralization, this makes it possible to scale execution easily by connecting users to a network of decentralized execution agents. The users can send the generated workflow of the application to any available agent, which will employ necessary resources to execute the application. </p>
+            </li>
+            <li>
+              <p><strong>Crypto</strong>. Incentivisation is the key to successful bootstrapping of the platform we aim to build. It helps both acquire important data to fine-tune and train generative AIs in the blockchain domain, but also to incentivise node operators as agents to participate in the execution network. Crypto is the best option for bootstrapping such participation where blockchain users and node operators can get paid by providing either high quality training data or execution service. </p>
+            </li>
+          </ul>
+          <p>Considering everything above, our vision and roadmap at KliK Networks going forward become extremely clear. We will create a platform that designs and executes personalized blockchain applications by designing and building state-of-the-art technologies that involve blockchain abstraction, generative AIs, and decentralized economies. </p>
+
+        </div>
+        <div class="tab-pane fade" id="content-system" role="tabpanel" aria-labelledby="system-tab" tabindex="0">
+          <h2>System Design</h2>
+          <p></p>
+          <h4>Workflow Design</h4>
+          <p>Blockchain users can use a visual workflow design GUI on KliK to create workflows according to their personal needs. Users can easily search and import components connected to smart contracts, blockchain transactions or generic operators into the GUI and build workflows by connecting and configuring these components. </p>
+          <p>After workflows are designed and saved, they will be stored on blockchain that can be accessible by both other users as well as AI agents. Other users can reuse the same or similar workflow for their own needs, while AI agents can use the saved workflow data to train or fine-tune their model to better generate useful workflows for other users in the future. </p>
+          <div class="container-fluid d-flex align-items-center justify-content-center w-75">
+            <img class="min-vw-30" src="images/design.svg" alt="Example" width="100%"/>
+          </div>
+          <h4>Generative AI</h4>
+          <p>When AI agents are trained and fine-tuned, they will be able to understand blockchain knowledge and automatically generate workflows based on users' inputs through simple methods such as chats and conversations. The generated workflows by AIs will render in the same GUI for users to inspect and configure. If they find something is wrong or not perfect, they can always make changes before pushing the workflow to automation agents for execution, especially the workflow involves financial transactions so that mistakes made by AIs can be found at this stage. </p>
+          <div class="container-fluid d-flex align-items-center justify-content-center w-75">
+            <img class="min-vw-30" src="images/generation.svg" alt="Example" width="100%"/>
+          </div>
+          <h4>Automation</h4>
+          <p>Once a personal workflow is either designed by the user or generated by AIs, the workflow can be automated by leveraging the automation agents in the network. The workflow data is sent to an available automation agent and the automation agent will start executing the workflow by connecting necessary data sources, node interfaces, etc. Troughout the execution process, data, alerts or transaction approval requests will be forwarded to the user of this workflow. </p>
+          <div class="container-fluid d-flex align-items-center justify-content-center w-75">
+            <img class="min-vw-30" src="images/execution.svg" alt="Example" width="100%"/>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="content-ai" role="tabpanel" aria-labelledby="ai-tab" tabindex="0">
+          <h2>Generative AI</h2>
+        </div>
+        <div class="tab-pane fade" id="content-incentive" role="tabpanel" aria-labelledby="incentive-tab" tabindex="0">
+          <h2>Incentive Scheme</h2>
+        </div>
+        <div class="tab-pane fade" id="content-roadmap" role="tabpanel" aria-labelledby="roadmap-tab" tabindex="0">
+          <h2>Roadmap</h2>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div>
+    <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+          <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+            <img src="images/logo.svg" alt="logo" width=60 />
+          </a>
+          <span class="mb-3 mb-md-0 text-body-secondary">© 2024 KliK Networks</span>
+        </div>
+
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+          <li class="fs-4 mx-1"><a class="text-body-secondary" href="#"><i class="fa-brands fa-twitter"></i></a></li>
+          <li class="fs-4 mx-1"><a class="text-body-secondary" href="#"><i class="fa-brands fa-discord"></i></a></li>
+          <li class="fs-4 mx-1"><a class="text-body-secondary" href="#"><i class="fa-brands fa-telegram"></i></a></li>
+        </ul>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
