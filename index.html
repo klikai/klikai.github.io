@@ -10,25 +10,7 @@
     <script src="https://kit.fontawesome.com/2884fdf7a1.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <script>
-    function openApp() {
-      // check invite code
-      fetch('http://34.78.9.227:8000/code/' + $('#invite-code').val())
-          .then((response) => response.json())
-          .then((data) => {
-              console.log(data);
-              if (data["status"] === 1) {
-                window.location.href = data["url"];
-              } else {
-                $('#code-status').text("Invalid code.");
-              }
-
-          })
-          .catch((error) => {
-              console.error('Error fetching data:', error);
-          });  
-    }
-  </script>
+  <script src="js/script.js"></script>
   <nav class="navbar sticky-top top-0 flex-md-nowrap p-3 mb-3 border-bottom d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start bg-white">
     <a href="/" class="d-flex align-items-center mb-2 p-3 mb-lg-0 link-body-emphasis text-decoration-none">
       <img src="/images/logo.svg" alt="logo" width=60 />
