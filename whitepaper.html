@@ -11,6 +11,13 @@
 </head>
 <body>
   <script src="js/script.js"></script>
+  <script>
+  if(window.location.hash == '#system-tab' ) { 
+   var someVarName = document.querySelector('#system-tab'); // theTabID of the tab you want to open
+   var tab = new bootstrap.Tab(someVarName);
+   tab.show();
+  }
+  </script>
   <nav class="navbar sticky-top top-0 flex-md-nowrap p-3 mb-3 border-bottom d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start bg-white">
     <a href="/" class="d-flex align-items-center mb-2 p-3 mb-lg-0 link-body-emphasis text-decoration-none">
       <img src="images/logo.svg" alt="logo" width=60 />
